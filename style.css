@@ -1,17 +1,39 @@
+:root {
+    --grey:  rgba(75, 75, 75, 0.593);
+}
+
 html, body {
+    background-image: url(img/colourful-watercolour-texture_1048-11773.webp);
+    background-size: cover;
     background-color: grey;
     height: 100vh;
     width: 100vw;
+    padding: 0;
+    margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+}
+
+.header, .footer {
+    background-color: var(--grey);
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: inherit;
 }
 
 .frame {
-    height: 200px;
-    width: 200px;
-    border: solid 5px brown;
+    height: 50vh;
+    width: 50vh;
+    border: solid 15px brown;
+    background-color: brown;
     overflow: hidden;
 }
 
@@ -56,42 +78,57 @@ html, body {
     flex-grow: 1;
     border: solid 2px black;
     display: flex;
+    box-sizing: border-box;
     align-items: center;
     justify-content: center;
+    background-size: cover;
 }
 
 .one {
+    background-image: url(img/1024px-Strawberries.jpg);
     background-color: red;
 }
 
 .two {
+    background-image: url(img/Japanese_maple.jpg);
     background-color: orange;
 }
 
 .three {
+    background-image: url(img/1024px-Cornwall_Daffodils.jpg);
     background-color: yellow;
 }
 
 .four {
+    background-image: url(img/Rotbugara_2010.JPG);
     background-color: green;
 }
 
 .five {
-    background-color: blue;
+    background-image: url(img/1024px-Wham-a_different_corner.jpg);
+    background-color: cyan;
 }
 
 .six {
-    background-color: indigo;
+    background-image: url(img/Iranian_Tiles_1.JPG);
+    background-color: blue;
 }
 
 .seven {
+    background-image: url(img/Amatista_Laye_2.jpg);
     background-color: purple;
+}
+
+.dots {
+    background-color: var(--grey);
+    padding: 5px 10px;
+    border-radius: 25px;
+    display: flex;
 }
 
 .dot {
     height: 15px;
     width: 15px;
-    /* background-color: #bbb; */
     border: 1px solid white;
     border-radius: 50%;
     display: inline-block;
