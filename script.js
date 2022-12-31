@@ -9,17 +9,21 @@ const dots = document.querySelector('.dots');
     for (const slide in slideshow) {
         const dot = document.createElement('span');
         dot.classList.add('dot');
-        dot.setAttribute('id', slide);
-        
+        //Click to jump to slide
         dot.addEventListener('click', function () {
-            //console.log(dotsArray.indexOf(dot));
+            //Cancel current timer
+            clearTimeout(countdown);
             let currentClass = allPics.className;
             allPics.classList.remove(`${currentClass}`);
+            //Apply class corresponding with dot's index
             allPics.classList.add(slideshow[dotsArray.indexOf(dot)]);
+            //Clear all dots and fill selected dot
             for (const dot in dotsArray) {
                 dotsArray[dot].classList.remove('filled');
             }  
             dot.classList.add('filled');
+            //Reset timer
+            startCountdown();
         });
         dotsArray.push(dot);
         dots.appendChild(dot);
@@ -28,23 +32,12 @@ const dots = document.querySelector('.dots');
 //Fill first dot on page load
 dotsArray[0].classList.add('filled');
 
+//Separate function to work on button click AND on timeout
 nextButton.addEventListener('click', advanceSlide);
-
-previousButton.addEventListener('click', function () {
-    let currentClass = allPics.className;
-    let newClass = slideshow[slideshow.indexOf(allPics.className) - 1];
-    let dotMarker = slideshow.indexOf(allPics.className) - 1;
-    dotsArray[dotMarker + 1].classList.remove('filled');
-    if (newClass == undefined) {
-        newClass = slideshow[slideshow.length - 1];
-        dotMarker = slideshow.length - 1;
-    } 
-    allPics.classList.remove(`${currentClass}`);
-    allPics.classList.add(`${newClass}`);
-    dotsArray[dotMarker].classList.add('filled');
-});
+previousButton.addEventListener('click', previousSlide);
 
 function advanceSlide() {
+    clearTimeout(countdown);
     let currentClass = allPics.className;
     let newClass = slideshow[slideshow.indexOf(allPics.className) + 1];
     // Remove fill from previous dot
@@ -58,6 +51,29 @@ function advanceSlide() {
     allPics.classList.add(`${newClass}`);
     // Add fill to next dot
     dotsArray[dotMarker].classList.add('filled');
+    //Begin time to next slide
+    startCountdown();
 }
 
-setInterval(advanceSlide, 5000);
+function previousSlide() {
+    clearTimeout(countdown);
+    let currentClass = allPics.className;
+    let newClass = slideshow[slideshow.indexOf(allPics.className) - 1];
+    let dotMarker = slideshow.indexOf(allPics.className) - 1;
+    dotsArray[dotMarker + 1].classList.remove('filled');
+    if (newClass == undefined) {
+        newClass = slideshow[slideshow.length - 1];
+        dotMarker = slideshow.length - 1;
+    } 
+    allPics.classList.remove(`${currentClass}`);
+    allPics.classList.add(`${newClass}`);
+    dotsArray[dotMarker].classList.add('filled');
+    startCountdown();
+}
+
+//Begin timer on page load
+startCountdown();
+
+function startCountdown() {
+    countdown = setTimeout(advanceSlide, 5000);
+}
