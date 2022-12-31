@@ -1,0 +1,102 @@
+html, body {
+    background-color: grey;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.frame {
+    height: 200px;
+    width: 200px;
+    border: solid 5px brown;
+    overflow: hidden;
+}
+
+#allPics {
+    box-sizing: border-box;
+    height: 100%;
+    width: 700%;
+    display: flex;
+    flex-direction: row;
+    transition: margin-left 1s;
+}
+
+.showOne {
+    margin-left: 0;
+}
+
+.showTwo {
+    margin-left: -100%;
+}
+
+.showThree {
+    margin-left: -200%;
+}
+
+.showFour {
+    margin-left: -300%;
+}
+
+.showFive {
+    margin-left: -400%;
+}
+
+.showSix {
+    margin-left: -500%;
+}
+
+.showSeven {
+    margin-left: -600%;
+}
+
+.pic {
+    flex-grow: 1;
+    border: solid 2px black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.one {
+    background-color: red;
+}
+
+.two {
+    background-color: orange;
+}
+
+.three {
+    background-color: yellow;
+}
+
+.four {
+    background-color: green;
+}
+
+.five {
+    background-color: blue;
+}
+
+.six {
+    background-color: indigo;
+}
+
+.seven {
+    background-color: purple;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    /* background-color: #bbb; */
+    border: 1px solid white;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.filled {
+    background-color: white;
+}
